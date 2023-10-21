@@ -1,4 +1,4 @@
-import { Link, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Stocks from './components/Stocks';
 import Movies from './components/Movies';
@@ -10,7 +10,9 @@ function App() {
       <nav className="comp nav">
         <ul>
           <li> <a href='/movies'> Anchor </a></li>
-          <li> <Link to='/'>Home</Link> </li>
+          <li> <NavLink activeClassName='purple' activeStyle={{ fontWeight: 'bold' }} exact to='/'>Home</NavLink></li>
+          <li> <NavLink activeClassName='purple' activeStyle={{ fontWeight: 'bold' }} to='/stocks'>stocks</NavLink></li>
+          <li> <NavLink activeClassName='purple' activeStyle={{ fontWeight: 'bold' }} to='movies'>movies</NavLink></li>
         </ul>
       </nav>
       <Switch>
@@ -22,6 +24,9 @@ function App() {
         </Route>
         <Route path='/movies'>
           <Movies />
+        </Route>
+        <Route to='/not-logged-in'>
+          <h1> You Must Be Logged In To Enter.</h1>
         </Route>
         <Route>
           <h1>Page Not Found</h1>
